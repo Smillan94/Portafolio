@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sebastián Millán | Freelance en Power BI y Business Intelligence</title>
+    <meta name="description" content="Servicios profesionales de visualización de datos, análisis y desarrollo de dashboards con Power BI. Especialista en ETL, análisis de KPIs y generación de insights para negocios.">
+    <style>
+        /* Global styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden; /* Prevents horizontal scroll */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); /* Dark blue gradient */
+            color: white;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* SVG wave pattern for background effect */
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300"><path d="M0,256L48,240C96,224,192,192,288,181.3C384,171,480,181,576,197.3C672,213,768,235,864,234.7C960,235,1056,213,1152,197.3C1248,181,1344,171,1392,165.3L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z" fill="rgba(255,255,255,0.1)"/></svg>') no-repeat center center;
+            background-size: cover;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1; /* Ensures content is above the pseudo-element background */
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            /* Gradient text effect */
+            background: linear-gradient(45deg, #fff, #e3f2fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out; /* Animation for text */
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.3s both; /* Animation with delay */
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #4caf50, #8bc34a); /* Green gradient */
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3); /* Shadow for button */
+            animation: fadeInUp 1s ease-out 0.6s both; /* Animation with delay */
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px); /* Lift effect on hover */
+            box-shadow: 0 12px 35px rgba(76, 175, 80, 0.4);
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeInRight 1s ease-out 0.9s both; /* Animation for visual */
+        }
+
+        .dashboard-mockup {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            transform: perspective(1000px) rotateY(-10deg); /* 3D tilt effect */
+            transition: transform 0.3s ease;
+        }
+
+        .dashboard-mockup:hover {
+            transform: perspective(1000px) rotateY(0deg); /* Straighten on hover */
+        }
+
+        .chart-container {
+            height: 300px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Purple-blue gradient */
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-bars {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            display: flex;
+            align-items: flex-end; /* Align bars to the bottom */
+            gap: 10px;
+        }
+
+        .bar {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 4px 4px 0 0;
+            animation: growUp 2s ease-out infinite alternate; /* Animation for bars */
+        }
+
+        /* Individual bar heights and animation delays */
+        .bar:nth-child(1) { width: 30px; height: 60px; animation-delay: 0s; }
+        .bar:nth-child(2) { width: 30px; height: 100px; animation-delay: 0.2s; }
+        .bar:nth-child(3) { width: 30px; height: 80px; animation-delay: 0.4s; }
+        .bar:nth-child(4) { width: 30px; height: 120px; animation-delay: 0.6s; }
+        .bar:nth-child(5) { width: 30px; height: 90px; animation-delay: 0.8s; }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: #f8f9fa; /* Light grey background */
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr; /* Image on left, text on right */
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .profile-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px; /* Space between cards in mobile view */
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(45deg, #1e3c72, #2a5298); /* Blue gradient top border */
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            border: 4px solid #1e3c72; /* Border around avatar */
+            background: linear-gradient(45deg, #1e3c72, #2a5298); /* Fallback background for avatar */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures image covers the area */
+            display: block;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #1e3c72; /* Dark blue heading */
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .highlight {
+            color: #2a5298; /* Blue highlight color */
+            font-weight: 600;
+        }
+
+        .linkedin-link {
+            color: #2a5298; /* Blue color for LinkedIn links */
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .linkedin-link:hover {
+            color: #1e3c72; /* Darker blue on hover */
+            text-decoration: underline;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #1e3c72;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #4caf50, #8bc34a); /* Green gradient top border */
+            transform: scaleX(0); /* Hidden by default */
+            transform-origin: left; /* Scale from left */
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1); /* Expand on hover */
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px); /* Lift effect on hover */
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, #1e3c72, #2a5298);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #1e3c72;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 100px 0;
+            background: #f8f9fa; /* Light grey background */
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+        }
+
+        .portfolio-image {
+            height: 200px;
+            background-color: #f0f0f0; /* Fallback background color */
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover the area, cropping if necessary */
+            display: block;
+            border-radius: 20px 20px 0 0; /* Match card border-radius */
+        }
+
+        .portfolio-content {
+            padding: 30px;
+        }
+
+        .portfolio-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #1e3c72;
+        }
+
+        .portfolio-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 100px 0;
+            background: #1e3c72; /* Dark blue background */
+            color: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+            gap: 30px;
+            text-align: center;
+        }
+
+        .testimonial-item {
+            padding: 30px;
+        }
+
+        .testimonial-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #4caf50; /* Green number */
+            margin-bottom: 10px;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: white;
+            text-align: center; /* Center content within this section */
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column; /* Stack contact methods vertically */
+            gap: 20px;
+            max-width: 400px; /* Limit width for better readability */
+            margin: 0 auto 40px auto; /* Center the methods and add bottom margin */
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            text-align: left; /* Align text within the method card to the left */
+        }
+
+        .contact-method:hover {
+            background: #e3f2fd;
+            transform: translateX(5px); /* Slight slide effect on hover */
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #1e3c72, #2a5298);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem; /* Adjusted font size for icons */
+        }
+
+        /* Footer */
+        .footer {
+            background: #1e3c72;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes growUp {
+            0% {
+                transform: scaleY(0.8);
+            }
+            50% {
+                transform: scaleY(1.1); /* Slightly overshoot for a bounce effect */
+            }
+            100% {
+                transform: scaleY(0.8);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr; /* Stack columns on small screens */
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr; /* Stack columns */
+            }
+
+            /* Adjust about-image to stack cards vertically on mobile */
+            .about-image {
+                display: flex;
+                flex-direction: column;
+                gap: 30px; /* Space between the two profile cards */
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr; /* Stack columns */
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr; /* Single column for services */
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr; /* Single column for portfolio */
+            }
+
+            .contact-methods {
+                margin-left: 20px; /* Adjust margin for smaller screens */
+                margin-right: 20px; /* Adjust margin for smaller screens */
+            }
+        }
+
+        /* CSS for the Intersection Observer to make sections visible */
+        section.visible {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Transforma tus datos en decisiones inteligentes</h1>
+                    <p>Ofrezco servicios especializados en Power BI para transformar tus datos en insights accionables que impulsen el crecimiento de tu negocio.</p>
+                    <!-- Call to Action button (currently commented out in original, but good to have) -->
+                    <!-- <a href="#contact" class="cta-button">Contáctame</a> -->
+                </div>
+                <div class="hero-visual">
+                    <div class="dashboard-mockup">
+                        <div class="chart-container">
+                            <div class="chart-bars">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <!-- Sebastián's Profile Card -->
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <!-- Image from GitHub URL -->
+                            <img src="https://github.com/Smillan94/Portafolio/blob/main/Foto.png?raw=true" 
+                                 alt="Sebastián Millán" 
+                                 onload="console.log('Imagen cargada correctamente')"
+                                 onerror="console.log('Error al cargar imagen; usando fallback de texto.'); this.style.display='none'; this.parentElement.innerHTML='SM';">
+                        </div>
+                        <h3>Sebastián Millán</h3>
+                        <p>Ingeniero Industrial</p>
+                        <p><strong>+9 años de experiencia</strong></p>
+                        <p><a href="https://www.linkedin.com/in/sebastianmillanalvarado" target="_blank" class="linkedin-link">LinkedIn</a></p>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h2>Sobre Mí</h2> <!-- Changed heading to "Sobre Mí" -->
+                    <p>Soy un profesional dedicado a transformar datos en soluciones de valor para tu negocio.</p>
+                    
+                    <p>Ingeniero Industrial con más de 9 años de experiencia en el análisis de datos e implementación de soluciones en entornos productivos y estratégicos. Actualmente, estoy cursando un <span class="highlight">Máster en Big Data y Business Intelligence</span>, lo que me permite estar actualizado con las mejores herramientas y metodologías para la toma de decisiones basadas en datos. Mi enfoque se centra en traducir datos complejos en visualizaciones claras y accionables que impulsen el crecimiento de tu negocio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Servicios Ofrecidos</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📊</div> <!-- Bar chart icon -->
+                    <h3>Extracción, Transformación y Carga de Datos (ETL)</h3>
+                    <p>Automatizo procesos de integración desde múltiples fuentes como Excel, SQL Server, PostgreSQL, APIs, entre otros.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏗️</div> <!-- Building icon -->
+                    <h3>Modelado de datos</h3>
+                    <p>Diseño estructuras eficientes y limpias para garantizar un análisis robusto.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📈</div> <!-- Chart increasing icon -->
+                    <h3>Creación de Dashboards en Power BI</h3>
+                    <p>Visualizaciones interactivas, intuitivas y alineadas con los KPIs del negocio.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔍</div> <!-- Magnifying glass icon -->
+                    <h3>Análisis y generación de insights</h3>
+                    <p>Ayudo a entender los datos para mejorar procesos, ventas, clientes o eficiencia operativa.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎓</div> <!-- Graduation cap icon -->
+                    <h3>Consultoría y capacitación personalizada</h3>
+                    <p>Asesoría a empresas o personas que deseen implementar Power BI o fortalecer su conocimiento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Proyectos de Ejemplo</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <!-- Image for Dashboard de Ventas por Región -->
+                        <img src="https://github.com/Smillan94/Portafolio/blob/main/Ventas.png?raw=true" 
+                             alt="Dashboard de Ventas por Región">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Dashboard de Ventas por Región</h3>
+                        <p>Panel interactivo que permite analizar el rendimiento de ventas por región geográfica, identificando oportunidades de crecimiento y optimización de recursos.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <!-- Image for Panel de Control de Producción -->
+                        <img src="https://github.com/Smillan94/Portafolio/blob/main/Produccion.png?raw=true" 
+                             alt="Panel de Control de Producción">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Panel de Control de Producción</h3>
+                        <p>Monitoreo en tiempo real de indicadores de producción, eficiencia de líneas y análisis de downtime para optimizar operaciones manufactureras.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <!-- Image for Reporte de Seguimiento de Clientes y CRM -->
+                        <img src="https://github.com/Smillan94/Portafolio/blob/main/Clientes.png?raw=true" 
+                             alt="Reporte de Seguimiento de Clientes y CRM">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Reporte de Seguimiento de Clientes y CRM</h3>
+                        <p>Análisis integral del ciclo de vida del cliente, segmentación avanzada y métricas de retención para maximizar el valor de cada cliente.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <!-- Image for Indicadores Financieros con Segmentación Dinámica -->
+                        <img src="https://github.com/Smillan94/Portafolio/blob/main/Finanzas.png?raw=true" 
+                             alt="Indicadores Financieros con Segmentación Dinámica">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Indicadores Financieros con Segmentación Dinámica</h3>
+                        <p>Dashboard financiero completo con análisis de rentabilidad, cash flow y métricas clave con capacidad de drill-down detallado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Experiencia que Respalda</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-item">
+                    <div class="testimonial-number">+20</div>
+                    <div class="testimonial-text">Dashboards entregados</div>
+                </div>
+                <div class="testimonial-item">
+                    <div class="testimonial-number">9</div>
+                    <div class="testimonial-text">Años de experiencia</div>
+                </div>
+                <div class="testimonial-item">
+                    <div class="testimonial-number">2</div>
+                    <div class="testimonial-text">Países: Colombia y España</div>
+                </div>
+                <div class="testimonial-item">
+                    <div class="testimonial-number">100%</div>
+                    <div class="testimonial-text">Proyectos completados</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-methods">
+                    <!-- Removed Sebastián's LinkedIn from here as it's now in the About section -->
+                    <!-- <div class="contact-method">
+                        <div class="contact-icon">💼</div>
+                        <div>
+                            <strong>LinkedIn</strong>
+                            <p><a href="https://www.linkedin.com/in/sebastianmillanalvarado" target="_blank" style="color: #2a5298; text-decoration: none;">www.linkedin.com/in/sebastianmillanalvarado</a></p>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Sebastián Millán - Freelance Power BI & Business Intelligence</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links (if you add a nav bar)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault(); // Prevent default anchor click behavior
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth' // Smooth scroll effect
+                });
+            });
+        });
+
+        // Intersection Observer for fade-in animations on scroll
+        const observerOptions = {
+            threshold: 0.1, // Trigger when 10% of the element is visible
+            rootMargin: '0px 0px -50px 0px' // Adjust trigger point
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add the 'visible' class to trigger CSS animations
+                    entry.target.classList.add('visible');
+                    // Stop observing once animated to prevent re-triggering
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        // Apply initial hidden state and transition to sections
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section); // Start observing each section
+        });
+
+        // The CSS class 'visible' is now defined in the <style> block
+        // to ensure sections become visible when observed.
+    </script>
+</body>
+</html>
